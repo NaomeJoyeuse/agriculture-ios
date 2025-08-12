@@ -1,0 +1,127 @@
+{
+    "Maize": {
+      "npk_kg_per_ha": { "N": 120, "P": 60, "K": 40 },
+      "fertilizers": ["Urea", "DAP", "NPK 20:10:10"],
+      "application_schedule": [
+        {
+          "stage": "At Planting",
+          "method": "Broadcast or Band placement",
+          "dose": "60 kg N, full P and K"
+        },
+        {
+          "stage": "30 DAP",
+          "method": "Top dressing",
+          "dose": "60 kg N (Urea) side dressed"
+        }
+      ],
+      "source": "CIMMYT & FAO"
+    },
+  
+    "Rice": {
+      "npk_kg_per_ha": { "N": 100, "P": 30, "K": 30 },
+      "fertilizers": ["Urea", "MOP", "SSP"],
+      "application_schedule": [
+        {
+          "stage": "Planting",
+          "method": "Soil incorporation",
+          "dose": "50% N + full P & K"
+        },
+        {
+          "stage": "Tillering",
+          "method": "Top dressing",
+          "dose": "25% N"
+        },
+        {
+          "stage": "Panicle initiation",
+          "method": "Top dressing",
+          "dose": "25% N"
+        }
+      ],
+      "source": "IRRI & FAO"
+    },
+  
+    "Wheat": {
+      "npk_kg_per_ha": { "N": 120, "P": 60, "K": 40 },
+      "fertilizers": ["Urea", "DAP", "NPK 15:15:15"],
+      "application_schedule": [
+        {
+          "stage": "Sowing",
+          "method": "Band placement",
+          "dose": "50% N + full P and K"
+        },
+        {
+          "stage": "Tillering (25-30 DAS)",
+          "method": "Top dressing",
+          "dose": "Remaining 50% N"
+        }
+      ],
+      "source": "ICAR & CIMMYT"
+    },
+  
+    "Beans": {
+      "npk_kg_per_ha": { "N": 20, "P": 60, "K": 40 },
+      "fertilizers": ["DAP", "Rhizobium inoculants"],
+      "application_schedule": [
+        {
+          "stage": "At Planting",
+          "method": "Banding or Spot placement",
+          "dose": "All P and K. Minimal N if no inoculant"
+        }
+      ],
+      "source": "AGRA & CIAT"
+    },
+  
+    "Cassava": {
+      "npk_kg_per_ha": { "N": 100, "P": 50, "K": 100 },
+      "fertilizers": ["Urea", "SSP", "MOP"],
+      "application_schedule": [
+        {
+          "stage": "1 Month After Planting",
+          "method": "Side dressing",
+          "dose": "50% NPK"
+        },
+        {
+          "stage": "3 Months After Planting",
+          "method": "Side dressing",
+          "dose": "Remaining 50% NPK"
+        }
+      ],
+      "source": "IITA Nigeria"
+    },
+  
+    "Tomato": {
+      "npk_kg_per_ha": { "N": 150, "P": 60, "K": 80 },
+      "fertilizers": ["Urea", "NPK 17:17:17", "Calcium Nitrate"],
+      "application_schedule": [
+        {
+          "stage": "Transplanting",
+          "method": "Fertigation",
+          "dose": "Apply 20-25% of total dose"
+        },
+        {
+          "stage": "Flowering and fruiting",
+          "method": "Fertigation / Weekly doses",
+          "dose": "Apply remaining in equal doses every week"
+        }
+      ],
+      "source": "USAID / Feed the Future"
+    },
+  
+    "Groundnut": {
+      "npk_kg_per_ha": { "N": 20, "P": 60, "K": 40 },
+      "fertilizers": ["SSP", "Gypsum"],
+      "application_schedule": [
+        {
+          "stage": "Before sowing",
+          "method": "Broadcast",
+          "dose": "Apply SSP and initial NPK"
+        },
+        {
+          "stage": "50 DAS",
+          "method": "Spot placement",
+          "dose": "Apply gypsum during pegging stage"
+        }
+      ],
+      "source": "ICRISAT"
+    }
+  }
