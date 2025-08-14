@@ -7,6 +7,7 @@ from .models_db.supplier import Supplier, Product
 from .models_db.order import Order
 from .models_db.feedback import Feedback
 from .models_db.input_usage import InputUsage
+from .models_db.farmer import Farmer
 
 admin.site.register(User)
 admin.site.register(CropRecommendation)
@@ -15,3 +16,4 @@ admin.site.register(Product)
 admin.site.register(Order)
 admin.site.register(Feedback)
 admin.site.register(InputUsage)
+admin.site.register(Farmer)
