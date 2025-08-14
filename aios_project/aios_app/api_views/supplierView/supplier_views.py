@@ -65,3 +65,47 @@ def get_supplier(request, supplier_id):
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Supplier.DoesNotExist:
         return Response({'error': 'Supplier not found'}, status=status.HTTP_404_NOT_FOUND)
+
+@jwt_required
+@api_view(['PATCH'])
+def update_supplier(request, supplier_id):
+    """
+    Update a supplier by user_id (partial update).
+    """
+    try:
+        supplier = Supplier.objects.get(user=supplier_id)
+    except Supplier.DoesNotExist:
+        return Response({'error': 'Supplier not found'}, status=status.HTTP_404_NOT_FOUND)
+    data = request.data.copy()
+# Do not allow changing the linked user
+    data.pop('user', None)
+    serializer = SupplierSerializer(supplier, data=data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PATCH'])
+def supplier_by_user(request, user_id):
+    """
+    GET: fetch supplier by user_id
+    PATCH: update supplier by user_id (partial update)
+    """
+    supplier = Supplier.objects.filter(user_id=user_id).first()
+    if not supplier:
+        return Response({'error': 'Supplier not found'}, status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        return Response(SupplierSerializer(supplier).data, status=status.HTTP_200_OK)
+    if request.method == 'GET':
+            return Response(SupplierSerializer(supplier).data, status=status.HTTP_200_OK)
+    if request.method == 'GET':
+             return Response(SupplierSerializer(supplier).data, status=status.HTTP_200_OK)
+
+    data = request.data.copy()
+    data.pop('user', None)  # do not allow changing linked user
+    serializer = SupplierSerializer(supplier, data=data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -2,7 +2,7 @@ from django.urls import path
 
 from .api_views.farmer.farmerView import my_farmer_profile,create_my_farmer_profile,list_farmers,update_my_farmer_profile,get_farmer
 from .api_views.orderView.order_view import create_order,get_order,list_orders,add_cart_item,checkout_cart,get_cart,remove_cart_item,update_cart_item,update_order_status
-from .api_views.supplierView.supplier_views import list_suppliers,create_supplier,get_supplier
+from .api_views.supplierView.supplier_views import list_suppliers,create_supplier,get_supplier,update_supplier,supplier_by_user
 from .api_views.authentications import user_view
 from .api_views.recommendationView import input_usage_view
 from .api_views.supplierView.product_views import create_product,product_detail,list_products,list_products_by_supplier
@@ -33,7 +33,8 @@ urlpatterns = [
     path('input-usage-prediction/', input_usage_view.predict_input_usage, name='input_usage_prediction'),
     path('suppliers/', list_suppliers, name='list_suppliers'),
     path('suppliers/create/', create_supplier, name='create_supplier'),
-    path('suppliers/<int:supplier_id>/', get_supplier, name='get_supplier'),
+    # path('suppliers/<int:user_id>/', get_supplier, name='get_supplier'),
+    path('suppliers/<int:user_id>/', supplier_by_user, name='supplier-by-user'),
     path('products/create/', create_product, name='create_product'),
     path('products/', list_products, name='list_products'),
     # path('products/<int:product_id>/', get_product, name='get_product'),
@@ -55,7 +56,6 @@ urlpatterns = [
     path('farmers/me/create/', create_my_farmer_profile, name='farmer-create-me'),
     path('farmers/me/update/', update_my_farmer_profile, name='farmer-update-me'),
 
-    # Admin/agronomist endpoints (optional)
     path('farmers/', list_farmers, name='farmers-list'),
     path('farmers/<int:farmer_id>/', get_farmer, name='farmer-detail'),
 ]
