@@ -1,5 +1,7 @@
 from django.urls import path
 
+from .api_views.farmer.usageView import list_my_usages,create_usage,delete_usage,update_usage,get_usage,usage_summary,list_all_usages
+
 from .api_views.farmer.farmerView import my_farmer_profile,create_my_farmer_profile,list_farmers,update_my_farmer_profile,get_farmer
 from .api_views.orderView.order_view import create_order,get_order,list_orders,add_cart_item,checkout_cart,get_cart,remove_cart_item,update_cart_item,update_order_status
 from .api_views.supplierView.supplier_views import list_suppliers,create_supplier,get_supplier,update_supplier,supplier_by_user
@@ -58,4 +60,11 @@ urlpatterns = [
 
     path('farmers/', list_farmers, name='farmers-list'),
     path('farmers/<int:farmer_id>/', get_farmer, name='farmer-detail'),
+    path('usages/', list_my_usages, name='list-my-usages'),
+    path('usages/create/', create_usage, name='create-usage'),
+    path('usages/<int:usage_id>/', get_usage, name='get-usage'),
+    path('usages/<int:usage_id>/update/', update_usage, name='update-usage'),
+    path('usages/<int:usage_id>/delete/', delete_usage, name='delete-usage'),
+    path('usages/summary/', usage_summary, name='usage-summary'),
+    path('admin/usages/', list_all_usages, name='list-all-usages')
 ]

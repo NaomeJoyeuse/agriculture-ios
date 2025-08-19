@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Usage
+from ..models_db.usage import Usage
 
 class UsageSerializer(serializers.ModelSerializer):
     farmer_name = serializers.SerializerMethodField(read_only=True)
