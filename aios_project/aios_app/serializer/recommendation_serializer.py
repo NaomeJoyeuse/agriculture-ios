@@ -67,4 +67,4 @@ class CropRecommendationSerializer(serializers.ModelSerializer):
             validated_data['status'] = 'pending_review'
         return super().create(validated_data)
     def get_agronomist_id(self, obj):
-        return obj.agronomist.id if obj.agronomist else None
+        return obj.agronomist.id if obj.agronomist else None    

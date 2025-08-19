@@ -40,7 +40,7 @@ def create_my_farmer_profile(request):
     if ser.is_valid():
         farmer = ser.save()
         return Response(FarmerSerializer(farmer).data, status=201)
-    return Response(ser.errors, status=400)
+    return Response(ser.errors, status=400) 
 
 @jwt_required
 @api_view(['PATCH'])
