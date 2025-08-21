@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.core.validators import MinValueValidator
+from .user import User
 
 
 class Usage(models.Model):
@@ -25,12 +26,8 @@ class Usage(models.Model):
         (UNIT_PCS, "pieces"),
     ]
 
-    # Who/where
-    farmer = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="input_usages",
-    )
+
+    farmer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     crop = models.CharField(max_length=100, blank=True, null=True)
     field_name = models.CharField(max_length=100, blank=True, null=True)
 

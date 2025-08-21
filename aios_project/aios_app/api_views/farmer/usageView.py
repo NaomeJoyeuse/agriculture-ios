@@ -53,19 +53,29 @@ def list_my_usages(request):
     
     return Response(UsageSerializer(queryset, many=True).data, status=200)
 
-@jwt_required
+# @jwt_required
+# @api_view(['POST'])
+# def create_usage(request):
+#     """
+#     Create a new input usage record for the current user
+#     """
+#     uid = _uid(request)
+    
+#     data = request.data.copy()
+#     # Set the farmer to the current user
+#     data['farmer'] = uid
+    
+#     # serializer = UsageSerializer(data=data)
+#     serializer = UsageSerializer(data=data, context={'request': request})
+#     if serializer.is_valid():
+#         usage = serializer.save()
+#         return Response(UsageSerializer(usage).data, status=201)
+#     return Response(serializer.errors, status=400)
+
 @api_view(['POST'])
+@jwt_required
 def create_usage(request):
-    """
-    Create a new input usage record for the current user
-    """
-    uid = _uid(request)
-    
-    data = request.data.copy()
-    # Set the farmer to the current user
-    data['farmer'] = uid
-    
-    serializer = UsageSerializer(data=data)
+    serializer = UsageSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():
         usage = serializer.save()
         return Response(UsageSerializer(usage).data, status=201)
