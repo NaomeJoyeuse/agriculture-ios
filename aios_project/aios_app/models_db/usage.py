@@ -30,7 +30,6 @@ class Usage(models.Model):
     farmer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     crop = models.CharField(max_length=100, blank=True, null=True)
     field_name = models.CharField(max_length=100, blank=True, null=True)
-
     # What
     input_type = models.CharField(max_length=20, choices=INPUT_TYPES)
     product_name = models.CharField(max_length=150)

@@ -1,7 +1,7 @@
 from django.urls import path
 
+from .api_views.farmer.feedbackView import create_feedback,delete_feedback,list_feedbacks, my_feedback_list,submit_feedback, update_feedback,update_my_feedback,get_feedback
 from .api_views.farmer.usageView import list_my_usages,create_usage,delete_usage,update_usage,get_usage,usage_summary,list_all_usages
-
 from .api_views.farmer.farmerView import my_farmer_profile,create_my_farmer_profile,list_farmers,update_my_farmer_profile,get_farmer
 from .api_views.orderView.order_view import create_order,get_order,list_orders,add_cart_item,checkout_cart,get_cart,remove_cart_item,update_cart_item,update_order_status
 from .api_views.supplierView.supplier_views import list_suppliers,create_supplier,get_supplier,update_supplier,supplier_by_user
@@ -20,6 +20,7 @@ urlpatterns = [
     path('login/', user_view.login, name='login'),
     path('users/', user_view.list_users, name='list_users'),
     path('users/<int:user_id>/', user_view.get_user_by_id, name='get_user_by_id'),
+     path('users/<int:user_id>/status/',user_view.update_user_status, name='update_user_status'), 
     path('fertilizer/submit/', submit_fertilizer_to_agronomist, name='fertilizer-submit'),
     path('fertilizer/<str:crop_name>/', get_fertilizer_plan, name='fertilizer-plan'),
     path('recommendations/agronomist-all/', all_recommendations_for_agronomist, name='all_recommendations_for_agronomist'),
@@ -52,12 +53,9 @@ urlpatterns = [
     path('orders/cart/items/<int:item_id>/remove/', remove_cart_item, name='cart-remove-item'),
     path('orders/cart/checkout/', checkout_cart, name='cart-checkout'),
     path('orders/<int:order_id>/status/', update_order_status, name='order-update-status'),
-
-
     path('farmers/me/', my_farmer_profile, name='farmer-me'),
     path('farmers/me/create/', create_my_farmer_profile, name='farmer-create-me'),
     path('farmers/me/update/', update_my_farmer_profile, name='farmer-update-me'),
-
     path('farmers/', list_farmers, name='farmers-list'),
     path('farmers/<int:farmer_id>/', get_farmer, name='farmer-detail'),
     path('usages/', list_my_usages, name='list-my-usages'),
@@ -66,5 +64,10 @@ urlpatterns = [
     path('usages/<int:usage_id>/update/', update_usage, name='update-usage'),
     path('usages/<int:usage_id>/delete/', delete_usage, name='delete-usage'),
     path('usages/summary/', usage_summary, name='usage-summary'),
-    path('admin/usages/', list_all_usages, name='list-all-usages')
+    path('admin/usages/', list_all_usages, name='list-all-usages'),
+    path('feedbacks/me/', my_feedback_list, name='my_feedback_list'),
+    path('feedbacks/create/', create_feedback, name='create_feedback'),  # POST
+    path('feedbacks/<int:feedback_id>/', get_feedback, name='feedback_detail'),  # GET specific
+    path('feedbacks/<int:feedback_id>/update/', update_feedback, name='update_feedback'),  # PATCH
+    path('feedbacks/<int:feedback_id>/delete/', delete_feedback, name='delete_feedback'),  # DELETE
 ]

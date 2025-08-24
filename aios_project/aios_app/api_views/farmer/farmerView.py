@@ -57,14 +57,14 @@ def update_my_farmer_profile(request):
         return Response(FarmerSerializer(farmer).data, status=200)
     return Response(ser.errors, status=400)
 
-# Optional: admin/agronomist listing (if permitted by your roles)
+
 @jwt_required
 @api_view(['GET'])
 def list_farmers(request):
     # Allow only certain roles to list (adjust as needed)
     role = _role(request.user)
-    if role not in ['admin', 'agronomist']:
-        return Response({'detail': 'Not allowed'}, status=403)
+    # if role not in ['admin', 'leader']:
+    #     return Response({'detail': 'Not allowed'}, status=403)
 
     qs = Farmer.objects.select_related('user').order_by('-created_at')
     return Response(FarmerSerializer(qs, many=True).data, status=200)
@@ -73,8 +73,8 @@ def list_farmers(request):
 @api_view(['GET'])
 def get_farmer(request, farmer_id):
     role = _role(request.user)
-    if role not in ['admin', 'agronomist']:
-        return Response({'detail': 'Not allowed'}, status=403)
+    # if role not in ['admin', 'leader']:
+    #     return Response({'detail': 'Not allowed'}, status=403)
     try:
         farmer = Farmer.objects.get(pk=farmer_id)
     except Farmer.DoesNotExist:
